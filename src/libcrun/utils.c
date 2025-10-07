@@ -359,7 +359,7 @@ safe_openat_fallback (int dirfd, const char *rootfs, const char *path, int flags
   size_t rootfs_len = strlen (rootfs);
   int ret;
 
-  path_in_chroot = chroot_realpath (rootfs, path, buffer);
+  path_in_chroot = chroot_realpath (rootfs, path, buffer ,sizeof(buffer));
   if (path_in_chroot == NULL)
     return crun_make_error (err, errno, "cannot resolve `%s` under rootfs", path);
 
